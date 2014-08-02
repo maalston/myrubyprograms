@@ -8,21 +8,32 @@ method. For example, if x = 45.5678 then format("%.2f", x) will return the strin
 Another way is to use the round function as follows: puts (x*100).round/100.0
 =end
 
+# reference: https://en.wikipedia.org/wiki/Fahrenheit
+# temperature_range [Freezing_point_of_water ... boiling_point] 
+# freezing_point_fahrenheit = 32
+# boiling_point_fahrenheit = 212
+# fahrenheit_to_celcius = (temperature_in_farhenheit.to_f - 32) / 1.8
+
 STDOUT.sync
+temperature_range = 32..212  # fehrenheit range
+fahrenheit_to_celcius = 0
+user_input_request = <<USER_QUESTION
+This program converts temperature in Fahrenheit to Celcius.  Input a temperature
+between freezing point [32] and boiling point [212].
+USER_QUESTION
+    
+# print message,get user input and validate
+puts user_input_request
 
-# 1 degree celcius = 9/5 degree fahrenheit
-# 2 Celcius = ([Fahrenheit] - 32) * (9/5)
+# get user input and valudate
+temperature_in_farhenheit = gets.to_f
 
-def convert fahrenheit
-   calculate_celcius = 5.0/9 * (fahrenheit.to_i - 32)
-end
-
-puts "This program  converts Celsius to Fahrenheit. \n\n"
-puts "Input Fahrenheit % : "
-  fahrenheit = gets
-puts "%s %.2f" %  ["Celcius = :",  convert(fahrenheit)]
-
-
-
+  if temperature_range.include? temperature_in_farhenheit   
+    #convert to farhenheit
+    fahrenheit_to_celcius = (temperature_in_farhenheit.to_f - 32) / 1.8.to_f
+    puts  "%s%.2f%s" % ["The Celcius temperature = ", fahrenheit_to_celcius,"\n" ]
+  else
+    puts "Invalid Farhenheit temperature"
+  end
 
 

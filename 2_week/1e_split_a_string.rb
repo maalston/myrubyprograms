@@ -2,13 +2,10 @@
 
 
 s = "Welcome to the forum.\nHere you can learn Ruby.\nAlong with other members.\n"
-
-line_number = 1
-newline = "Line number #{line_number} : "
-
-
-# Find each \n and replace with \nPreffix
-#
-0.upto(s.size-2){|index| (s[index] == "\n") ? newline << "\nLine number " << "#{line_number = line_number + 1} : "
-: newline << s[index] }
-puts newline + "\n"
+count = 0
+s.each_line do |line|
+  count += 1
+  puts "Line %2d: %s" %  [count, line ]
+end
+# Looks like hangout froze...no voice and your video froze.
+# k

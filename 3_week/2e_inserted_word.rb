@@ -2,7 +2,6 @@
 #
 def insert_word(filename, search_word, insert_str)
   File.open("#{filename}", 'r') do |file|
-    str = insert_str.to_s
     while line = file.gets
       yeild
       puts line
@@ -10,15 +9,17 @@ def insert_word(filename, search_word, insert_str)
   end
 end
 
-insert_word(line search_word str) do |line, search_word, insert_str|
+insert_word(line sword insert_str) do |line, search_word, insert_str|
   newline = ""
   x = "#{line}".to_a
-  if x.include?("#{search_word})
-    newline = x.gsub(#{search_word}, #{insert_str} + " " + #{search_word}")
-    return newline
+  if x.include?("#{search_word}")
+    newline = x.gsub!("#{search_word}"){| insert_str, search_word | "#{insert_str} + ' ' + #{search_word}"}
   else
-    return
+    return line, search_word, insert_str
   end
 end
 
-insert_word('3wk_2e_text.bak', 'word', "insertedrii")
+filename = "3wk_2e_text.bak"
+str = 'word'
+insert_str = "inserted"
+insert_word filename, str, insert_str
